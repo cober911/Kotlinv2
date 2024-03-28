@@ -1,6 +1,19 @@
-[
-{"name": "bob", "phones": ["1234"],"emails": ["mail@mail.ru"]},
-{"name": "lisa", "phones": ["2345"],"emails": []},
-{"name": "Baki", "phones": [],"emails": ["mail@gmail.com"]},
-{"name": "Vovd", "phones": [],"emails": []}
-]
+{
+"users":[{
+"name":"bob",
+"phone":[1234],
+"email":[mail@mail.ru]
+},{
+"name":"lisa",
+"phone":[2345],
+"email":[]
+},{
+"name":"Baki",
+"phone":[],
+"email":[mail@gmail.com]
+},{
+"name":"Asfasasfasfasf",
+"phone":[],
+"email":[]
+}]
+}
