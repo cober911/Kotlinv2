@@ -2,5 +2,5 @@
 {"name": "bob", "phones": ["1234"],"emails": ["mail@mail.ru"]},
 {"name": "lisa", "phones": ["2345"],"emails": []},
 {"name": "Baki", "phones": [],"emails": ["mail@gmail.com"]},
-{"name": "Vova", "phones": ["+53245325"],"emails": []}
+{"name": "Vovd", "phones": [],"emails": []}
 ]

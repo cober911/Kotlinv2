@@ -1,0 +1,12 @@
+User: bob
+Phone: 1234
+eMail: mail@mail.ru
+
+User: lisa
+Phone: 2345
+
+User: Baki
+eMail: mail@gmail.com
+
+User: Vovd
+

@@ -23,6 +23,7 @@ class Export: Command {
     }
 
     fun run(users:  MutableList<Person>){
+        safeText(users)
         var text ="[\n"
 
         for (i in users){
