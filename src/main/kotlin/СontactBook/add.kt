@@ -1,7 +1,6 @@
 package main.kotlin.СontactBook
 
 class Add : Command {
-
     override fun isValid(): Boolean {
         return true
     }
@@ -18,63 +17,61 @@ class Add : Command {
         val existingUser = users.find { it.getName() == name }
 
         if (existingUser != null) {
-            // Если пользователь существует, обновляем его данные
-            updatePerson(existingUser, book)
+            // Если пользователь существует, выводим сообщение об ошибке
+            println("Пользователь с таким именем уже существует.")
         } else {
             // Если пользователь не существует, добавляем нового пользователя
             book.addUser(newUser)
 
-            // Запрашиваем у пользователя телефоны и адреса электронной почты
-            updatePerson(newUser, book)
+            // Запрашиваем номер телефона
+            val phone = addPhone()
+            newUser.addPhone(phone)
+
+            // Запрашиваем адрес электронной почты
+            val email = addEmail()
+            newUser.addEmail(email)
+
+            println("Контакт успешно добавлен.")
         }
     }
-}
 
-private fun updatePerson(user: Person, book: ContactsBook) {
-    println("Введите phone если хотите добавить номер телефона \nВведите email если хотите добавить почту")
-    val reader = book.readCommand()
-
-    when (reader) {
-        is AddPhone -> {
-            if (reader.isValid()) {
-                reader.run(user)
-            } else {
-                println("Некорректный ввод: должны только числа")
-            }
-        }
-
-        is AddEmail -> {
-            if (reader.isValid()){
-                reader.run(user)
-            }else{
-                println("Некорректный ввод: пример mail@mail.ru")
-            }
-        }
-
-        is Exit -> {}
-
-        else -> {
-            println("Ошибка ввода. попробуйте еще раз или введите exit для выхода")
-        }
+    private fun addNewPerson(name: String): Person {
+        return Person(name)
     }
-}
 
-private fun addNewPerson(name: String): Person {
-    return Person(name)
-}
-
-private fun addName(): String {
-    println("Введите имя контакта")
-    var name = readln()
-    while (!name.matches(Regex("""[A-Za-z а-яёА-ЯЁ]+"""))) {
-        println("Некорректный ввод имени")
-        name = readln()
+    private fun addName(): String {
+        println("Введите имя контакта")
+        var name = readln()
+        while (!name.matches(Regex("""[A-Za-z а-яёА-ЯЁ]+"""))) {
+            println("Некорректный ввод имени")
+            name = readln()
+        }
+        val refactorName = funRefactorName(name)
+        return refactorName
     }
-    val refactorName = funRefactorName(name)
-    return refactorName
-}
 
-private fun funRefactorName(name: String): String {
-    val refactorName = name.trim().replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-    return refactorName
+    private fun funRefactorName(name: String): String {
+        val refactorName = name.trim().replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        return refactorName
+    }
+
+    private fun addPhone(): String {
+        println("Введите номер телефона начиная с 8")
+        var phone = readln()
+        while (!phone.matches(Regex("""\d+"""))) {
+            println("Некорректный ввод номера телефона")
+            phone = readln()
+        }
+        return phone
+    }
+
+    private fun addEmail(): String {
+        println("Введите адрес электронной почты")
+        var email = readln()
+        while (!email.matches(Regex("""[_A-Za-z0-9-]+@[_A-Za-z0-9-.]+\.[A-Za-z0-9-.]+"""))) {
+            println("Некорректный ввод адреса электронной почты")
+            email = readln()
+        }
+        return email
+    }
 }

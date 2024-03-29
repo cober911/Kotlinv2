@@ -1,4 +1,6 @@
-package main.kotlin.СontactBook
+package main.kotlin.СontactBook.СontactBook
+
+import main.kotlin.СontactBook.*
 
 /*
 — Создайте иерархию sealed классов, которые представляют собой команды. В корне иерархии интерфейс Command.
